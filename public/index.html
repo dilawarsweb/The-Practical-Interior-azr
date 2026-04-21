@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thepracticalinterior.site | elegant interior design</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ----- RESET & VARIABLES ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --white: #FFFFFF;
+            --gray-dark: #3C3C3C;
+            --accent-warm: #C7B198; /* dusty rose / warm taupe */
+            --bg-light: #F9F7F5;    /* soft off-white with warmth */
+            --text-light: #6B6B6B;
+            --border-light: #E8E0DA;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.03);
+            --transition: all 0.25s ease;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gray-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .logo, .headline-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        /* ----- PAGE TRANSITION (simple fade on load) ----- */
+        body {
+            animation: pageFade 0.5s ease;
+        }
+        @keyframes pageFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* ----- HEADER & NAV ----- */
+        header {
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo a {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--gray-dark);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--accent-warm);
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-dark);
+            font-weight: 400;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            color: var(--accent-warm);
+            border-bottom-color: var(--accent-warm);
+        }
+        .btn-quote {
+            border: 1.5px solid var(--accent-warm);
+            background: transparent;
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-quote:hover {
+            background: var(--accent-warm);
+            color: white;
+            border-color: var(--accent-warm);
+        }
+        /* hamburger */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray-dark);
+        }
+        #menu-toggle { display: none; }
+
+        /* ----- HERO SECTION ----- */
+        .hero {
+            background: linear-gradient( rgba(60,60,60,0.2), rgba(255,255,255,0.4) ), url('assets/img/living-room-sofa.jpg') center/cover no-repeat;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(0,0,0,0.15); /* subtle gradient fallback */
+            width: 100%;
+            height: 100%;
+            padding: 5rem 1rem;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: #fefefe;
+        }
+        .btn-primary {
+            background: var(--accent-warm);
+            border: none;
+            color: white;
+            padding: 0.9rem 2.8rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-right: 1rem;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: #b59a81;
+        }
+        .btn-outline-light {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--gray-dark);
+        }
+
+        /* stats bar */
+        .stats {
+            background: var(--white);
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+            margin-bottom: 0.2rem;
+        }
+        .stat-item p {
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* sections general */
+        section {
+            padding: 5rem 0;
+        }
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--accent-warm);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        /* services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--bg-light);
+            padding: 2rem 1.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        .service-card i {
+            font-size: 2rem;
+            color: var(--accent-warm);
+            margin-bottom: 1rem;
+        }
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* portfolio grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: var(--shadow-sm);
+            aspect-ratio: 1 / 1.1;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.03);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.4));
+            color: white;
+            padding: 1.5rem 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* journal / blog */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .blog-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+        .blog-copy {
+            padding: 1.2rem 1.2rem 1.4rem;
+        }
+        .blog-copy h4 {
+            font-size: 1.45rem;
+            margin-bottom: 0.4rem;
+        }
+        .blog-copy p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* about + team */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: var(--shadow-sm);
+        }
+        .values-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .values-list li {
+            margin-bottom: 0.6rem;
+            font-weight: 300;
+        }
+        .values-list i {
+            color: var(--accent-warm);
+            margin-right: 0.8rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .team-card {
+            text-align: center;
+        }
+        .team-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            filter: grayscale(15%);
+            box-shadow: var(--shadow-sm);
+        }
+        .team-card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+        }
+        .team-card p {
+            color: var(--accent-warm);
+            font-weight: 400;
+        }
+        /* testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+        .testimonial-card i {
+            color: var(--accent-warm);
+            font-size: 2rem;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        .client {
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+        .client-location {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem 3rem;
+            margin-top: 3rem;
+        }
+        .faq-item strong {
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            color: var(--text-light);
+        }
+        /* footer / consultation */
+        .footer-cta {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border-light);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contact-intro {
+            max-width: 760px;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+            background: white;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 4px;
+        }
+        .btn-submit {
+            background: var(--accent-warm);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-submit:hover {
+            background: #a68972;
+        }
+        .contact-details i {
+            color: var(--accent-warm);
+            width: 30px;
+            margin-right: 0.5rem;
+        }
+        .contact-details .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.7rem;
+        }
+        .social-links {
+            margin: 2rem 0 1rem;
+        }
+        .social-links a {
+            color: var(--gray-dark);
+            font-size: 1.5rem;
+            margin-right: 1.2rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            color: var(--accent-warm);
+        }
+        .copyright {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+        .copyright a {
+            color: var(--accent-warm);
+            text-decoration: none;
+            margin: 0 0.35rem;
+        }
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+        /* cookie consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 2rem;
+            right: 2rem;
+            max-width: 400px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: none;
+            z-index: 999;
+            border: 1px solid var(--border-light);
+        }
+        .cookie-consent p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .cookie-btn {
+            background: var(--accent-warm);
+            border: none;
+            color: white;
+            padding: 0.5rem 1.8rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* responsive */
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            #menu-toggle:checked ~ .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid var(--border-light);
+                gap: 1.5rem;
+            }
+            .hero h1 { font-size: 3rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .service-cards { grid-template-columns: 1fr; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- COOKIE CONSENT -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p><i class="fa-solid fa-cookie-bite"></i> We use cookies to enhance your experience. By continuing, you agree to our <a href="privacy-policy.html">privacy policy</a>.</p>
+        <button class="cookie-btn" id="acceptCookies">Accept</button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo"><a href="#">the<span>practical</span>interior.site</a></div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
+        <div class="nav-links">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#journal">Journal</a>
+            <a href="#contact">Contact</a>
+            <a href="#consultation" class="btn-quote">Consultation</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Beautiful Spaces,<br>Thoughtfully Designed</h1>
+                <p>We help you transform your house into a home that reflects your unique style and personality, from concept to completion.</p>
+                <a href="#portfolio" class="btn-primary">View Our Portfolio</a>
+                <a href="#consultation" class="btn-outline-light">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item"><h3>15+</h3><p>Years Experience</p></div>
+            <div class="stat-item"><h3>250+</h3><p>Projects Completed</p></div>
+            <div class="stat-item"><h3>98%</h3><p>Happy Clients</p></div>
+            <div class="stat-item"><h3>5x</h3><p>Design Awards</p></div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="container services-grid">
+            <div>
+                <div class="section-label">Our Services</div>
+                <h2>Comprehensive Interior Design Solutions</h2>
+                <p style="color: var(--text-light);">We believe every space tells a story. From concept to curation, our full‑service approach ensures a home that feels both beautiful and authentically yours.</p>
+            </div>
+            <div class="service-cards">
+                <div class="service-card"><i class="fa-solid fa-building"></i><h4>Full-Service Design</h4><p>End‑to‑end guidance from mood boards to final installation.</p></div>
+                <div class="service-card"><i class="fa-solid fa-couch"></i><h4>Furniture Styling</h4><p>Curated pieces that balance form, function, and comfort.</p></div>
+                <div class="service-card"><i class="fa-solid fa-swatchbook"></i><h4>Color Consulting</h4><p>Palettes that enhance light, flow, and your personal taste.</p></div>
+                <div class="service-card"><i class="fa-solid fa-vector-square"></i><h4>Space Planning</h4><p>Intelligent layouts that maximize both beauty and usability.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">Recent projects</div>
+            <h2 style="text-align:center;">Transforming spaces, one room at a time</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item"><img src="assets/img/kitchen.jpg" alt="Modern Farmhouse Kitchen"><div class="portfolio-overlay">Modern Farmhouse Kitchen</div></div>
+                <div class="portfolio-item"><img src="assets/img/living-room-sofa.jpg" alt="Minimalist Living Room"><div class="portfolio-overlay">Minimalist Living Room</div></div>
+                <div class="portfolio-item"><img src="assets/img/bedroom-5.jpg" alt="Scandi Bedroom"><div class="portfolio-overlay">Scandi Bedroom</div></div>
+                <div class="portfolio-item"><img src="assets/img/mirrors.jpg" alt="Coastal Study"><div class="portfolio-overlay">Coastal Study</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT & PHILOSOPHY -->
+    <section id="about">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="assets/img/bedroom-lightings.jpg" alt="Designer consulting with clients">
+            </div>
+            <div>
+                <div class="section-label">Our story</div>
+                <h2>Creating Spaces That Inspire You</h2>
+                <p>We believe that great design is personal. For over a decade, we’ve partnered with homeowners to craft interiors that feel both elevated and livable — always warm, never pretentious.</p>
+                <ul class="values-list">
+                    <li><i class="fa-regular fa-circle-check"></i> Personalized approach — your story, your space</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Sustainable & heirloom-quality materials</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Transparency from concept to final reveal</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOURNAL -->
+    <section id="journal">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">From the journal</div>
+            <h2 style="text-align:center;">Design tips you can use right away</h2>
+            <p style="text-align:center; color: var(--text-light); max-width: 860px; margin: 0 auto;">
+                Smart, practical updates on layouts, lighting, and finishes. Browse quick reads that help you make confident decisions, avoid costly mistakes, and create rooms that feel calm, useful, and beautifully personal.
+            </p>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="assets/img/side lamps.jpg" alt="Layered living room lighting ideas">
+                    <div class="blog-copy">
+                        <h4>Layer Light Like a Pro</h4>
+                        <p>Use ambient, task, and accent lighting together to build warmth, improve function, and highlight your room’s best architectural details.</p>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <img src="assets/img/pillow.jpg" alt="Selecting accent textiles for a sofa">
+                    <div class="blog-copy">
+                        <h4>Accent Textiles That Work</h4>
+                        <p>Mix texture, scale, and tones instead of matching everything. Pillows and throws should complement your room, not compete for attention.</p>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <img src="assets/img/bathroom-decor3.jpg" alt="Bathroom styling with mirrors and accessories">
+                    <div class="blog-copy">
+                        <h4>Small Bathroom, Big Style</h4>
+                        <p>Choose a statement mirror, reduce visual clutter, and add one organic element to make compact bathrooms feel brighter and more intentional.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEET THE DESIGNERS -->
+    <section id="team" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">Meet our designers</div>
+            <h2 style="text-align:center;">Passionate experts dedicated to your vision</h2>
+            <div class="team-grid">
+                <div class="team-card"><img src="assets/img/women-profile-white.jpeg" alt="Elena Vance"><h4>Elena Vance</h4><p>Principal Designer</p></div>
+                <div class="team-card"><img src="assets/img/black-men-profilejpeg" alt="Marcus Chen"><h4>Marcus Chen</h4><p>Color Specialist</p></div>
+                <div class="team-card"><img src="assets/img/women-profile-3.jpg" alt="Sofia Rios"><h4>Sofia Rios</h4><p>Furniture Stylist</p></div>
+                <div class="team-card"><img src="assets/img/profile-black-men-2.jpeg" alt="David Okafor"><h4>David Okafor</h4><p>Sustainable Design</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">Kind words</div>
+            <h2 style="text-align:center;">Client testimonials</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card"><i class="fa-solid fa-quote-right"></i><p>They completely transformed our dark living room into a light-filled haven. Every detail was considered.</p><span class="client">Johnson Family</span><div class="client-location">Kitchen Remodel</div></div>
+                <div class="testimonial-card"><i class="fa-solid fa-quote-right"></i><p>Professional, warm, and incredibly talented. Our bedroom finally feels like a sanctuary.</p><span class="client">Patricia Moore</span><div class="client-location">Master Suite</div></div>
+                <div class="testimonial-card"><i class="fa-solid fa-quote-right"></i><p>We interviewed three firms and chose them for their listening skills. They exceeded our vision.</p><span class="client">The Parkers</span><div class="client-location">Full Home</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 style="text-align:center;">Questions? We Have Answers.</h2>
+            <div class="faq-grid">
+                <div class="faq-item"><strong>How does your design process work?</strong><p>We start with a discovery call, then a concept proposal, design development, and finally installation. You’re involved every step.</p></div>
+                <div class="faq-item"><strong>Do you offer virtual consultations?</strong><p>Absolutely. We work with clients locally and remotely via video calls and digital mood boards.</p></div>
+                <div class="faq-item"><strong>What is the typical investment?</strong><p>Projects vary widely; we provide a detailed proposal after our first meeting. Our fees are always transparent.</p></div>
+                <div class="faq-item"><strong>How long does a project take?</strong><p>A single room can take 4-8 weeks; full homes 4-6 months depending on scope and custom pieces.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONSULTATION -->
+    <footer class="footer-cta" id="contact">
+        <div class="container">
+            <div class="contact-intro">
+                <h2 style="font-size:2.8rem;">Ready to Transform Your Space?</h2>
+                <p style="margin-bottom:2rem;">Book an initial consultation — we’ll explore ideas, scope, and budget.</p>
+            </div>
+            <div class="contact-grid" id="consultation">
+                <div>
+                    <form id="consultForm">
+                        <div class="form-group"><input type="text" placeholder="Your name" id="name" required></div>
+                        <div class="form-group"><input type="email" placeholder="Email address" id="email" required></div>
+                        <div class="form-group">
+                            <select id="projectType">
+                                <option>Full interior design</option>
+                                <option>Furniture styling</option>
+                                <option>Color consultation</option>
+                                <option>Space planning</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><textarea rows="3" placeholder="Tell us about your project..." id="message"></textarea></div>
+                        <button type="submit" class="btn-submit">Send consultation request</button>
+                    </form>
+                </div>
+                <div class="contact-details">
+                    <p class="contact-item"><i class="fa-solid fa-location-dot"></i> 24 Clark St, Brooklyn, NY 11201</p>
+                    <p class="contact-item"><i class="fa-solid fa-phone"></i> (212) 555‑0973</p>
+                    <p class="contact-item"><i class="fa-solid fa-envelope"></i> hello@thepracticalinterior.site</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Houzz"><i class="fa-brands fa-houzz"></i></a>
+                    </div>
+                    <p style="margin-top:2rem;"><i>We’ll respond within 24h to schedule your free 30-min call.</i></p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 thepracticalinterior.site — Warm, thoughtful design. All rights reserved.
+                <a href="privacy-policy.html">Privacy Policy</a>|
+                <a href="terms-and-conditions.html">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (cookie + form + smooth anchor) -->
+    <script>
+        (function() {
+            // COOKIE CONSENT with localStorage
+            const cookieBox = document.getElementById('cookieConsent');
+            const acceptBtn = document.getElementById('acceptCookies');
+            if (!localStorage.getItem('cookieConsent')) {
+                cookieBox.style.display = 'block';
+            }
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'accepted');
+                cookieBox.style.display = 'none';
+            });
+
+            // FORM VALIDATION + alert demo
+            const form = document.getElementById('consultForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                if (!name || !email) {
+                    alert('Please fill in name and email.');
+                    return;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('Enter a valid email address.');
+                    return;
+                }
+                alert(`Thanks ${name}! A designer will reply within 24h. (Demo)`);
+                form.reset(); // optional
+            });
+
+            // smooth internal navigation & active section (simple)
+            const navLinks = document.querySelectorAll('.nav-links a, .btn-quote, .btn-primary, .btn-outline-light');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetEl = document.getElementById(targetId);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth' });
+                            // close mobile menu if open
+                            document.getElementById('menu-toggle').checked = false;
+                        } else if (href === '#') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // Portfolio & team images have dead href protection (they are not links)
+            // All placeholder links (#) will not reload page
+        })();
+    </script>
+    <!-- small extra to ensure portfolio overlay text visible on hover (already done) -->
+</body>
+</html>
